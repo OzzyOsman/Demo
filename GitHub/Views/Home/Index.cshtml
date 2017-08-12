@@ -1,0 +1,30 @@
+﻿@model GitHub.Models.UserSearchViewModel
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="row">
+    @using (Html.BeginForm("Search", "Home", FormMethod.Post))
+    {        
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="col-md-10 col-sm-offset-1">
+            <div class="panel panel-primary">
+                <div class="panel-heading">User Search</div>
+                <div class="panel-body">
+                    <div class="form-group form-inline col-sm-12 search-view">
+                        <span class="control-label">username: </span>
+                        @Html.TextBox("Username", null, new {@class = "form-control", PlaceHolder = "enter username", autofocus = ""})                              
+                        <button type="submit" class="btn btn-primary glyphicon glyphicon-search" title="Search"></button>
+                    </div>
+                    <div class="form-group col-sm-12 search-view">
+                        @if (Model != null && Model.NoResults)
+                        {
+                            <span class="text-danger">No Results Found !</span>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>

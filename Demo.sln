@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GitHub", "GitHub\GitHub.csproj", "{93E391FD-CAB5-4AFD-9B44-2F9DABC43744}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GitHubTests", "GitHubTests\GitHubTests.csproj", "{F7AC1C8C-D127-4E48-AA3F-B6E6889C2200}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BennettsBiking", "BennettsBiking\BennettsBiking.csproj", "{CD5A1183-A4C7-4651-983B-5C612A56EDF8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{93E391FD-CAB5-4AFD-9B44-2F9DABC43744}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{93E391FD-CAB5-4AFD-9B44-2F9DABC43744}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{93E391FD-CAB5-4AFD-9B44-2F9DABC43744}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{93E391FD-CAB5-4AFD-9B44-2F9DABC43744}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F7AC1C8C-D127-4E48-AA3F-B6E6889C2200}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F7AC1C8C-D127-4E48-AA3F-B6E6889C2200}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F7AC1C8C-D127-4E48-AA3F-B6E6889C2200}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F7AC1C8C-D127-4E48-AA3F-B6E6889C2200}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CD5A1183-A4C7-4651-983B-5C612A56EDF8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CD5A1183-A4C7-4651-983B-5C612A56EDF8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CD5A1183-A4C7-4651-983B-5C612A56EDF8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CD5A1183-A4C7-4651-983B-5C612A56EDF8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
