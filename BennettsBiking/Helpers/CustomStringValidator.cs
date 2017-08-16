@@ -31,8 +31,12 @@ namespace BennettsBiking.Helpers
     /// <returns></returns>
     //public static string ReplaceUnwantedChars(this string str)
     //{
-    //    return str
+    //    if(!string.IsNullOrEmpty(str)){
+    //      return str
     //        .Replace("!", "")
     //        .Replace("*", "");
+    //    }
+    //      
+    //    return str;
     //}
 }
