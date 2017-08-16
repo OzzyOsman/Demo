@@ -3,8 +3,8 @@
 namespace BennettsBiking.Helpers
 {
     /// <summary>
-    /// An alternative might be to have a string Extension to strip out any unwanted charecters 
-    /// see commented out (requried static class) example below
+    /// An alternative might be to have a string Extension to strip out any unwanted characters 
+    /// see commented out (requries static class) example below
     /// </summary>
     public class CustomStringValidator : ValidationAttribute
     {

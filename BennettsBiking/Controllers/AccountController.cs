@@ -11,7 +11,6 @@ namespace BennettsBiking.Controllers
     /// </summary>
     public class AccountController : ApiController
     {
-
         [HttpPost]
         public IHttpActionResult PostNewUser(UserModel model)
         {

@@ -7,13 +7,12 @@ using System.Web.Mvc;
 
 namespace BennettsBiking.Controllers
 {
-
     /// <summary>
-    /// In order to keep the application simple aI have coded both an MVC and API controller and call the API from here
+    /// In order to keep the application simple I have coded both an MVC and API controller and call the API from here
     /// rather than create another API application. Usually the controller code would be dumb and main procesing would be handled in 
     /// other classes but I wanted to get as much done as possible in a short time frame.
     /// 
-    /// Also, please free to refer to the BGL Demo demo projects I prepared where I impleneted DI and Unit tests etc.
+    /// Also, please free to refer to the BGL Demo demo projects I prepared where I implemented DI and Unit tests etc.
     /// </summary>
     public class HomeController : Controller
     {
@@ -34,6 +33,7 @@ namespace BennettsBiking.Controllers
                 {
                     client.BaseAddress = new Uri("http://localhost:58376/api/");
                     client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                    
                     //HTTP POST
                     var postTask = client.PostAsJsonAsync<UserModel>("Account", model);
                     postTask.Wait();
@@ -50,15 +50,15 @@ namespace BennettsBiking.Controllers
                         }
 
                         return View("Index", model);
-                    }else
+                    }
+                    else
                     {
-                        ModelState.AddModelError("", string.Format("{0} - Could not Create User Record", result.ReasonPhrase));
+                        ModelState.AddModelError("", string.Format("{0} - Could not create user record", result.ReasonPhrase));
                     }
                 }
             }
 
             return View("Index", model);
         }
-
     }
 }
