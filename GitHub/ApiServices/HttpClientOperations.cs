@@ -15,13 +15,13 @@ namespace GitHub.ApiServices
     {
         private HttpClient _httpClient;
         
-        public HttpResponseMessage CallApi(string baseaddress, string apiMethod)
+        public HttpResponseMessage CallApi(string baseAddress, string apiMethod)
         {
             try
             {
                 _httpClient = new HttpClient();
 
-                _httpClient.BaseAddress = new Uri(baseaddress);
+                _httpClient.BaseAddress = new Uri(baseAddress);
                 _httpClient.DefaultRequestHeaders.Accept.Clear();
                 _httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                 _httpClient.DefaultRequestHeaders.Add("User-Agent", "my-user-agent-name");
@@ -30,7 +30,6 @@ namespace GitHub.ApiServices
             }
             catch (AggregateException ex)
             {
-                
                  throw ThrowException(apiMethod);
             }
         }

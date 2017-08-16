@@ -16,7 +16,7 @@ namespace GitHubTests
     [TestClass]
     public class GitHubApiTests
     {
-        private IGitHubApi service { get; set; }
+        private IGitHubApi apiService { get; set; }
         private Mock<IHttpClientOperations> httpClientOperations { get; set; }
 
         [TestInitialize]
@@ -24,22 +24,21 @@ namespace GitHubTests
         {
             httpClientOperations = new Mock<IHttpClientOperations>();
 
-            service = new GitHubApi(httpClientOperations.Object);
+            apiService = new GitHubApi(httpClientOperations.Object);
         }
         
         [TestMethod]
-        public void GetUserAndReposTest_ValidResponse_WithMockHIHttpClientOperationsClass()
+        public void GetUserAndReposTest_ValidResponse_WithMockHttpClientOperationsClass()
         {
             string userName = "username";
             string userPath = string.Format("users/{0}", userName);
             string repoPath = string.Format("users/{0}/repos", userName);
-            UserSearchViewModel model = new UserSearchViewModel { UserName = userName };
-
+            
             List<GitHubUserRepoModel> repoModels = new List<GitHubUserRepoModel> { 
                 new GitHubUserRepoModel { Id = 1, Stargazers_Count = 1, Name = "Repo 1", Html_Url = "Repo 1 Url" },
                 new GitHubUserRepoModel { Id = 2, Stargazers_Count = 2, Name = "Repo 2", Html_Url = "Repo 2 Url" },
                 new GitHubUserRepoModel { Id = 3, Stargazers_Count = 3, Name = "Repo 3", Html_Url = "Repo 3 Url" },
-                new GitHubUserRepoModel { Id = 2, Stargazers_Count = 4, Name = "Repo 4", Html_Url = "Repo 4 Url" },
+                new GitHubUserRepoModel { Id = 4, Stargazers_Count = 4, Name = "Repo 4", Html_Url = "Repo 4 Url" },
                 new GitHubUserRepoModel { Id = 5, Stargazers_Count = 5, Name = "Repo 5", Html_Url = "Repo 5 Url" }, 
                 new GitHubUserRepoModel { Id = 6, Stargazers_Count = 6, Name = "Repo 6", Html_Url = "Repo 6 Url" }
             };
@@ -71,14 +70,14 @@ namespace GitHubTests
             httpClientOperations.Setup(x => x.CallApi(Constants.GitHubEndpoint, repoPath)).Returns(fakeRepoResponse);
 
 
-            GitHubUserModel result = service.GetUserAndRepos(userName).Result;
+            GitHubUserModel result = apiService.GetUserAndRepos(userName).Result;
 
             //Check User Data
             Assert.AreEqual(userModel.Id, result.Id);
             Assert.AreEqual(userModel.Location, result.Location);
             Assert.AreEqual(userModel.Login, result.Login);
             Assert.AreEqual(userModel.Avatar_Url, result.Avatar_Url);
-            Assert.AreEqual(userModel.Repos, result.Repos);
+            Assert.AreEqual(userModel.Repos.Count, result.Repos.Count);
 
             //Check Repos Counts, Sort Order Etc
             CollectionAssert.AreEqual(repoModels.OrderByDescending(x => x.Stargazers_Count).Take(5).ToList(), result.Repos);
@@ -86,15 +85,11 @@ namespace GitHubTests
         }
 
         [TestMethod]
-        public void GetUserAndReposTest_InvalidResponse_WithMockHIHttpClientOperationsClass()
+        public void GetUserAndReposTest_InvalidResponse_WithMockHttpClientOperationsClass()
         {
             string userName = "username";
             string userPath = string.Format("users/{0}", userName);
-            string repoPath = string.Format("users/{0}/repos", userName);
-            UserSearchViewModel model = new UserSearchViewModel { UserName = userName };
-
-            List<GitHubUserRepoModel> repoModels = new List<GitHubUserRepoModel> {};
-
+          
             GitHubUserModel userModel = new GitHubUserModel
             {
                 Id = 1,
@@ -106,7 +101,7 @@ namespace GitHubTests
             };
 
 
-            var fakeUserResponse = new HttpResponseMessage(HttpStatusCode.BadGateway)
+            var fakeUserResponse = new HttpResponseMessage(HttpStatusCode.BadRequest)
             {
                 Content = new ObjectContent<GitHubUserModel>(userModel, new JsonMediaTypeFormatter())
             };
@@ -114,7 +109,7 @@ namespace GitHubTests
             httpClientOperations.Setup(x => x.CallApi(Constants.GitHubEndpoint, userPath)).Returns(fakeUserResponse);
 
             
-            GitHubUserModel result = service.GetUserAndRepos(userName).Result;
+            GitHubUserModel result = apiService.GetUserAndRepos(userName).Result;
 
             //Check User Data
             Assert.IsNull(result);

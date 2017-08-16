@@ -56,11 +56,14 @@ namespace GitHub.ApiServices
             }
             catch (Exception ex)
             {
-                Elmah.ErrorLog.GetDefault(HttpContext.Current).Log(new Elmah.Error(ex));
+                Elmah.ErrorLog
+                    .GetDefault(HttpContext.Current)
+                    .Log(new Elmah.Error(ex));
             }
 
             return userData;
         }
+
 
         private async Task<GitHubUserModel> FindUser(string userName)
         {

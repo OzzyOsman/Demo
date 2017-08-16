@@ -56,7 +56,7 @@ namespace GitHubTests
         }
 
         [TestMethod]
-        public void SeatchActionViewTest_CalledWithValidModelAndValidModelState_WithMockHitHubApiClass()
+        public void SeatchActionViewTest_CalledWithValidModelAndValidModelState_WithMockGitHubApiClass()
         {
             string login = "username";
             UserSearchViewModel model = new UserSearchViewModel { UserName = login };
@@ -70,13 +70,13 @@ namespace GitHubTests
             };
 
             gitHubApi.Setup(x => x.GetUserAndRepos(login)).ReturnsAsync(expectedData);
-
-
+            
             ViewResult view = controller.Search(model) as ViewResult;
             GitHubUserModel resultModel = view.ViewData.Model as GitHubUserModel;
 
             Assert.AreEqual("SearchReults", view.ViewName);
             Assert.AreEqual(expectedData.GetType(), view.ViewData.Model.GetType());
+
             Assert.IsNotNull(resultModel.Id);
             Assert.AreEqual(resultModel.Id, expectedData.Id);
             Assert.AreEqual(resultModel.Location, expectedData.Location);
@@ -85,7 +85,7 @@ namespace GitHubTests
         }
 
         [TestMethod]
-        public void SeatchActionViewTest_CalledWithInValidModelAndValidModelState_WithMockHitHubApiClass()
+        public void SeatchActionViewTest_CalledWithInValidModelAndValidModelState_WithMockGitHubApiClass()
         {
             string login = "username";
             UserSearchViewModel model = new UserSearchViewModel { UserName = login };

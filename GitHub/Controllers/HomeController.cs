@@ -8,7 +8,7 @@ namespace GitHub.Controllers
     /// <summary>
     /// I had considered using Angular Js 1.? for the front end but decided that 
     /// that is quite old now and wasn't justifiable in the timescale for this demo 
-    /// but decided it would be better to demonstrate unit testing, Mocking IOC etc
+    /// and decided it would be better to demonstrate unit testing, Mocking IOC etc
     /// </summary>
     public class HomeController : Controller
     {

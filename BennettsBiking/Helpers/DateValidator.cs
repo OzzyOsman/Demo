@@ -16,7 +16,9 @@ namespace BennettsBiking.Helpers
                 DateTime convertedDate;
                 bool result = DateTime.TryParse(value.ToString(), out convertedDate);
 
-                return result? ValidationResult.Success : new ValidationResult("Please enter a valid date in the following format: dd MMM yyyy"); ;
+                return result
+                    ? ValidationResult.Success 
+                    : new ValidationResult("Please enter a valid date in the following format: dd MMM yyyy"); ;
             }
 
             return new ValidationResult("Please enter a valid date in the following format: dd MMM yyyy");
