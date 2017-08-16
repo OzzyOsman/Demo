@@ -34,7 +34,7 @@ namespace BennettsBiking.Controllers
                     model.Id = newUser.Id;
                     model.FirstName = newUser.FirstName;
                     model.LastName = newUser.LastName;
-                    model.DateOfBirth = newUser.DateOfBirth.ToString(" dd MMM yyyy");
+                    model.DateOfBirth = newUser.DateOfBirth.ToString("dd MMM yyyy");
 
                     return Ok(model);
                 }
