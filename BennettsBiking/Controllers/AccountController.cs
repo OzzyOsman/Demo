@@ -7,7 +7,7 @@ using System;
 namespace BennettsBiking.Controllers
 {
     /// <summary>
-    /// In order to keep the application simple I have not moved the logic(context createtion etc) outside of the controller method.
+    /// In order to keep the application simple I have not moved the logic(context creation etc) outside of the controller method.
     /// </summary>
     public class AccountController : ApiController
     {
