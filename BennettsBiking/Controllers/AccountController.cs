@@ -7,7 +7,7 @@ using System;
 namespace BennettsBiking.Controllers
 {
     /// <summary>
-    /// In order to keep the application simple I have not moved the logic(context createtion etc) outside of the controller method.
+    /// In order to keep the application simple I have not moved the logic(context creation etc) outside of the controller method.
     /// </summary>
     public class AccountController : ApiController
     {
@@ -34,7 +34,7 @@ namespace BennettsBiking.Controllers
                     model.Id = newUser.Id;
                     model.FirstName = newUser.FirstName;
                     model.LastName = newUser.LastName;
-                    model.DateOfBirth = newUser.DateOfBirth.ToString(" dd MMM yyyy");
+                    model.DateOfBirth = newUser.DateOfBirth.ToString("dd MMM yyyy");
 
                     return Ok(model);
                 }
